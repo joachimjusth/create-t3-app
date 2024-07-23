@@ -9,8 +9,18 @@ Vous venez de créer une nouvelle application T3 et vous êtes prêt à démarre
 
 ## Base de données
 
+### MySQL, PostgreSQL
+
+Si vous avez choisi MySQL ou PostgreSQL comme base de données, votre application T3 sera livrée avec un script bash `start-database.sh` qui peut créer un conteneur docker avec une base de données pour le développement local. Si vous avez déjà une base de données, n’hésitez pas à supprimer ce fichier et à mettre vos identifiants de base de données dans `.env`. Sur macOS, vous pouvez également utiliser [DBngin](https://dbngin.com/) si vous ne souhaitez pas utiliser docker.
+
+### Prisma
+
 Si votre application inclut Prisma, assurez vous de lancer la commande `npx prisma db push` depuis la racine de votre application
 Cette commande va synchroniser votre schéma Prisma avec votre base de données et va générer les types TypeScript sur lequel se base le client Prisma. Notez que vous devez redémarrer le serveur TypeScript afin qu'il puisse détecter les nouveaux types générés.
+
+### Drizzle
+
+Si votre application inclut Drizzle, vérifiez le fichier `.env` pour obtenir des instructions sur la façon de construire votre variable d’environnement `DATABASE_URL`. Une fois que votre fichier d’environnement est prêt, exécutez `pnpm db:push` (ou l’équivalent pour d’autres gestionnaires de paquets) pour pousser votre schéma.
 
 ## Authentification
 
@@ -29,6 +39,14 @@ Bien sûr, si vous préférez utiliser un autre fournisseur d'authentification, 
 8. Définissez `NEXTAUTH_SECRET` dans `.env`. En développement, n'importe quelle chaîne fonctionnera, pour la production, voir la note dans `.env` sur la génération d'un secret sécurisé.
 
 Vous devriez maintenant pouvoir vous connecter.
+
+## Configuration de l’éditeur
+
+Les extensions suivantes sont recommandées pour une expérience de développement optimale. Les liens ci-dessous fournissent un plugin spécifique à chaque éditeur.
+
+- [Prisma Extension](https://www.prisma.io/docs/guides/development-environment/editor-setup)
+- [Tailwind CSS IntelliSense Extension](https://tailwindcss.com/docs/editor-setup)
+- [Prettier Extension](https://prettier.io/docs/en/editors.html)
 
 ## Prochaines étapes
 

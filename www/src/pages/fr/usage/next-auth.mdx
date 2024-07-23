@@ -64,7 +64,7 @@ const User = () => {
 
 Create T3 App est configuré pour utiliser le [session callback](https://next-auth.js.org/configuration/callbacks#session-callback) dans la configuration NextAuth.js pour inclure l'ID de l'utilisateur dans le objet "session".
 
-```ts:pages/api/auth/[...nextauth].ts
+```ts:server/auth.ts
 callbacks: {
     session({ session, user }) {
       if (session.user) {
@@ -77,7 +77,7 @@ callbacks: {
 
 Ceci est couplé avec un fichier de déclaration de type pour s'assurer que `user.id` est typé lors de l'accès à l'objet `session`. En savoir plus sur [`Module Augmentation`](https://next-auth.js.org/getting-started/typescript#module-augmentation) sur la documentation de NextAuth.js.
 
-```ts:types/next-auth.d.ts
+```ts:server/auth.ts
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {

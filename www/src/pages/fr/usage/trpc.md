@@ -55,7 +55,7 @@ const userRouter = createTRPCRouter({
 });
 ```
 
-Il s'agit d'une procédure tRPC (équivalente à un gestionnaire de route dans un backend traditionnel) qui valide d'abord l'entrée à l'aide de Zod (qui est la même bibliothèque de validation que nous utilisons pour les [variables d'environnement] (./env-variables)) - dans ce cas , il s'assure que l'entrée est une chaîne de caractères. Si l'entrée n'en est pas une, elle renverra une erreur informative à la place.
+Il s'agit d'une procédure tRPC (équivalente à un gestionnaire de route dans un backend traditionnel) qui valide d'abord l'entrée à l'aide de Zod (qui est la même bibliothèque de validation que nous utilisons pour les [variables d'environnement](./env-variables)) - dans ce cas , il s'assure que l'entrée est une chaîne de caractères. Si l'entrée n'en est pas une, elle renverra une erreur informative à la place.
 
 Après l'entrée, nous enchaînons une fonction de résolveur qui peut être soit une [query](https://trpc.io/docs/v10/react-queries), [mutation](https://trpc.io/docs/v10/react-mutations), ou une [subscription](https://trpc.io/docs/v10/subscriptions). Dans notre exemple, le résolveur appelle notre base de données à l'aide de notre client [prisma](./prisma) et renvoie l'utilisateur dont l'`id` correspond à celui que nous avons transmis.
 
@@ -91,7 +91,37 @@ const UserPage = () => {
 };
 ```
 
-Vous remarquerez immédiatement à quel point la saisie semi-automatique et la sécurité de typage sont bonnes. Dès que vous écrivez `trpc.`, vos routeurs s'affichent en saisie semi-automatique et lorsque vous sélectionnez un routeur, ses procédures s'affichent également. Vous obtiendrez également une erreur TypeScript si votre entrée ne correspond pas au validateur que vous avez défini du côté backend.
+Vous remarquerez immédiatement à quel point la saisie semi-automatique et la sécurité de typage sont bonnes. Dès que vous écrivez `api.`, vos routeurs s'affichent en saisie semi-automatique et lorsque vous sélectionnez un routeur, ses procédures s'affichent également. Vous obtiendrez également une erreur TypeScript si votre entrée ne correspond pas au validateur que vous avez défini du côté backend.
+
+## Inférence des erreurs
+
+Par défaut, create-t3-app configure un [formateur d’erreurs](https://trpc.io/docs/v11/server/error-formatting) qui vous permet d’inférer vos erreurs Zod si vous obtenez des erreurs de validation sur le backend.
+
+Exemple d’utilisation :
+
+```tsx
+function MyComponent() {
+  const { mutate, error } = api.post.create.useMutation();
+
+  return (
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      mutate({ title: formData.get('title') });
+    }}>
+      <input name="title" />
+      {error?.data?.zodError?.fieldErrors.title && (
+        {/** `mutate` a renvoyé une erreur sur le `titre` */}
+        <span className="mb-8 text-red-500">
+          {error.data.zodError.fieldErrors.title}
+        </span>
+      )}
+
+      ...
+    </form>
+  );
+}
+```
 
 ## Fichiers
 
@@ -324,6 +354,22 @@ test("example router", async () => {
   const example = await caller.example.hello(input);
 
   expect(example).toMatchObject({ greeting: "Hello test" });
+});
+```
+
+Si votre procédure est protégée, vous pouvez passer un objet `session` simulé lorsque vous créez le contexte :
+
+```ts
+test("protected example router", async () => {
+  const ctx = await createInnerTRPCContext({
+    session: {
+      user: { id: "123", name: "John Doe" },
+      expires: "1",
+    },
+  });
+  const caller = appRouter.createCaller(ctx);
+
+  // ...
 });
 ```
 

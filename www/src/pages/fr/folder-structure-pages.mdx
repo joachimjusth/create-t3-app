@@ -85,6 +85,27 @@ Contient des utilitaires d'authentification tels que la récupération de la ses
 Le fichier `db.ts` est utilisé pour instancier le client Prisma au niveau global. Voir [Utilisation de Prisma](usage/prisma#prisma-client) et [meilleures pratiques pour utiliser Prisma avec Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) pour plus d'informations.
 
 </div>
+<div data-components="drizzle">
+
+### `src/server/db`
+
+The `db` folder contains the Drizzle client and schema. Note that drizzle also requires the `drizzle.config.ts` file (see below).
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/index.ts`
+
+The `index.ts` file is used to instantiate the Drizzle client at global scope. See [Drizzle usage](usage/drizzle#drizzle-client) and [best practices for using Drizzle with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
+
+</div>
+<div data-components="drizzle">
+
+#### `src/server/db/schema.ts`
+
+The `schema.ts` file is used to define the database schema. See [Drizzle usage](usage/drizzle#drizzle-client) and [best practices for using Drizzle with Next.js](https://www.prisma.io/docs/guides/database/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices) for more information.
+
+</div>
 <div data-components="trpc">
 
 ### `src/server/api`
@@ -132,20 +153,6 @@ Le fichier `root.ts` est utilisé pour fusionner les routeurs tRPC et les export
 Le dossier `styles` contient les styles globaux de l'application.
 
 </div>
-<div data-components="nextauth">
-
-### `src/types`
-
-Le dossier `types` est utilisé pour stocker les types réutilisés ou les déclarations de type.
-
-</div>
-<div data-components="nextauth">
-
-#### `src/types/next-auth.d.ts`
-
-Le fichier `next-auth.d.ts` est utilisé pour étendre le type de session par défaut NextAuth afin d'inclure l'ID utilisateur. Voir [utilisation de NextAuth.js](usage/next-auth#inclusion-de-userid-dans-la-session) pour plus d'informations.
-
-</div>
 <div data-components="trpc">
 
 ### `src/utils`
@@ -181,6 +188,20 @@ Le fichier `.env.example` montre des exemples de variables d'environnement basé
 Le fichier `.eslintrc.cjs` est utilisé pour configurer ESLint. Voir la [documentation de ESLint](https://eslint.org/docs/latest/user-guide/configuring/configuration-files) pour plus d'informations.
 
 </div>
+<div data-components="drizzle">
+
+### `db.sqlite (sqlite only)`
+
+The `db.sqlite` file contains your development database. This file is only created after running the `db:push` parseCommandLine, and ignored by git.
+
+</div>
+<div data-components="drizzle">
+
+### `drizzle.config.ts`
+
+The `drizzle.config.ts` file is used to configure drizzle kit. See [the documentation](https://orm.drizzle.team/kit-docs/config-reference) for more information.
+
+</div>
 <div>
 
 ### `next-env.d.ts`
@@ -207,6 +228,13 @@ Le fichier `postcss.config.cjs` est utilisé pour l'utilisation de Tailwind Post
 ### `prettier.config.mjs`
 
 Le fichier `prettier.config.mjs` est utilisé pour configurer Prettier afin d'inclure le prettier-plugin-tailwindcss pour le formatage des classes CSS Tailwind. Consultez l'[article de blog Tailwind CSS](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) pour plus d'informations.
+
+</div>
+<div data-components="drizzle">
+
+### `start-database.sh (mysql or postgres only)`
+
+The `start-database.sh` file is used to start the database. Please see the comments inside the file for information on how to start the database with your operating system.
 
 </div>
 <div>

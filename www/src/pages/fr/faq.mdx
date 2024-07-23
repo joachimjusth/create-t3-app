@@ -22,6 +22,10 @@ Si vous n'êtes pas familier avec les différentes technologies utilisées dans 
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 
+## How do I keep my app up to date?
+
+Create T3 App is a scaffolding tool, not a framework. This means that once you initialize an app, it's yours. There is no postinstall CLI tool similar to help you stay up to date. If you want to keep track of any improvements we make to the template, you could [enable notifications for releases](https://docs.github.com/en/account-and-profile/managing-subscriptions-and-notifications-on-github/setting-up-notifications/configuring-notifications#configuring-your-watch-settings-for-an-individual-repository) on our repository. That being said it is not really necessary to implement every change we make to the template in your app.
+
 ## Quelles ressources d'apprentissage sont actuellement disponibles?
 
 Bien que les ressources répertoriées ci-dessous soient parmi les meilleures qui existent pour la stack T3, la communauté (et [Theo](https://youtu.be/rzwaaWH0ksk?t=1436)) vous recommandent de commencer à utiliser la stack et d'apprendre en cours de route en codant avec elle.
@@ -32,18 +36,19 @@ Maintenant, nous comprenons que cette voie ne fonctionne pas pour tout le monde.
 
 ### Articles
 
-- [Créez une application complète avec Create T3 App](https://www.nexxel.dev/blog/ct3a-guestbook)
-- [Un premier aperçu de Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
-- [Migrer votre application T3 vers un Turborepo](https://www.jumr.dev/blog/t3-turbo)
-- [Intégrer Stripe dans votre application T3](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
+- [A first look at Create T3 App](https://dev.to/ajcwebdev/a-first-look-at-create-t3-app-1i8f)
+- [Migrating your T3 App into a Turborepo](https://www.jumr.dev/blog/t3-turbo)
+- [Integrating Stripe into your T3 App](https://blog.nickramkissoon.com/posts/integrate-stripe-t3)
 
 ### Vidéos
 
-- [Créez un clone Twitter avec la stack T3 - tRPC, Next.js, Prisma, Tailwind et Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
-- [Créez un blog avec la stack T3 - tRPC, TypeScript, Next.js, Prisma et Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
-- [Créer une application de chat en direct avec la stack T3 - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
-- [La stack T3 - Comment nous l'avons créez](https://www.youtube.com/watch?v=H-FXwnEjSsI)
-- [Un aperçu de Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
+- [From 0 to Production - The Modern React Tutorial (RSCs, Next.js, Shadui, Drizzle, TS and more)](https://www.youtube.com/watch?v=d5x0JCZbAJs) **(recommended)** (updated 2024)\*
+- [Jack Herrington - Build a Note Taking app with the T3 Stack](https://www.youtube.com/watch?v=J1gzN1SAhyM)
+- [Build a Twitter Clone with the T3 Stack - tRPC, Next.js, Prisma, Tailwind & Zod](https://www.youtube.com/watch?v=nzJsYJPCc80)
+- [Build a Blog With the T3 Stack - tRPC, TypeScript, Next.js, Prisma & Zod](https://www.youtube.com/watch?v=syEWlxVFUrY)
+- [Build a Live Chat Application with the T3 Stack - TypeScript, Tailwind, tRPC](https://www.youtube.com/watch?v=dXRRY37MPuk)
+- [The T3 Stack - How We Built It](https://www.youtube.com/watch?v=H-FXwnEjSsI)
+- [An overview of the Create T3 App (Next, Typescript, Tailwind, tRPC, Next-Auth)](https://www.youtube.com/watch?v=VJH8dsPtbeU)
 
 ## Pourquoi y a-t-il des fichiers `.js` dans le projet ?
 
@@ -62,5 +67,8 @@ Cependant, si vous avez du mal à l'implémenter et que vous souhaitez voir un p
 Selon [T3-Axiom #2](/fr/introduction#etre-responsable), nous aimons les trucs à la pointe de la technologie, mais nous apprécions la stabilité, l'entièreté de votre routeur est difficile à porter, [pas le meilleur lieu pour les technologies de pointes](https://youtu.be/mnwUbtieOuI?t=1662). Bien que `/app` soit [un aperçu du futur](https://youtu.be/rnsC-12PVlM?t=818), il n'est pas prêt pour la production ; L'API est en version bêta et devrait subir des modifications avec changements majeurs pouvant casser le code.
 
 <Callout type="info">
-  Pour obtenir une liste des fonctionnalités prises en charge, planifiées et en cours de développement dans le répertoire `/app`, consultez la [documentation de la beta de Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
+  Pour obtenir une liste des fonctionnalités prises en charge, planifiées et en
+  cours de développement dans le répertoire `/app`, consultez la [documentation
+  de la beta de
+  Next.js](https://beta.nextjs.org/docs/app-directory-roadmap#supported-and-planned-features).
 </Callout>
